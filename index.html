@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script>window.__SUPABASE_URL__="https://wmxnwapnfurwoalvkkwh.supabase.co";window.__SUPABASE_ANON_KEY__="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndteG53YXBuZnVyd29hbHZra3doIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU5MDgwODEsImV4cCI6MjA5MTQ4NDA4MX0.BNgF4LD35_Ooxtkv5Pok8ldrBeHPOCDauv-ZYG1v7_Q";</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TaskVault</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      /* Critical above-the-fold CSS */
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, sans-serif;
+        background-color: #f0f4fc;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #1a1a1a;
+      }
+      .loading {
+        font-size: 1.2rem;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading" class="loading">Loading...</div>
+    <div id="app" class="app" hidden>
+      <header>
+        <h1>TaskVault</h1>
+        <button id="signOut" class="btn btn-secondary">Sign Out</button>
+      </header>
+
+      <main>
+        <section id="auth" class="card">
+          <h2>Sign In or Sign Up</h2>
+          <form id="authForm">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" required />
+            </div>
+            <div class="auth-buttons">
+              <button type="submit" name="action" value="signIn" class="btn btn-primary">
+                Sign In
+              </button>
+              <button type="submit" name="action" value="signUp" class="btn btn-outline">
+                Sign Up
+              </button>
+            </div>
+            <div id="authError" class="error" aria-live="polite"></div>
+          </form>
+        </section>
+
+        <section id="dashboard" class="card" hidden>
+          <h2>Your Tasks</h2>
+          <form id="taskForm">
+            <div class="form-group">
+              <label for="taskTitle">New Task</label>
+              <input type="text" id="taskTitle" placeholder="What needs to be done?" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+            <div id="taskError" class="error" aria-live="polite"></div>
+          </form>
+
+          <ul id="taskList" class="task-list" aria-label="Your tasks"></ul>
+          <div id="emptyState" class="empty-state" hidden>
+            <p>No tasks yet. Add one above!</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
